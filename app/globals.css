@@ -1,0 +1,102 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+/* ✅ Import typography plugin */
+@plugin "@tailwindcss/typography";
+
+/* ✅ Extend your theme here */
+@theme {
+  /* Colors */
+  --color-cream: #FAF7EA;
+
+  /* Breakpoints (screens) */
+  --breakpoint-xxs: 320px;
+  --breakpoint-xs: 400px;
+  --breakpoint-xsm: 480px;
+  --breakpoint-mdm: 668px;
+  --breakpoint-md: 769px;
+  --breakpoint-lgx: 1024px;
+  --breakpoint-lgxx: 1119px;
+  --breakpoint-lg: 1219px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+
+  /* Fonts */
+  --font-cormorant: var(--font-cormorant);
+  --font-inter: var(--font-inter);
+  --font-playfair: var(--font-playfair);
+  --font-geistSans: var(--font-geistSans);
+  --font-geistMono: var(--font-geistMono);
+  --font-lato: var(--font-lato);
+  --font-corinthia: var(--font-corinthia);
+  --font-caprasimo: var(--font-caprasimo);
+  --font-freehand: var(--font-freehand);
+  --font-bhhanna: var(--font-bh-hanna);
+  --font-montserrat: var(--font-montserrat);
+  --font-merriweather: var(--font-merriweather);
+
+  /* Animations */
+  --animate-floating: float 6s ease-in-out infinite;
+  --animate-dash: dash 1.5s linear infinite;
+  --animate-vibrate: vibrate 0.3s linear infinite;
+}
+
+/* ✅ Define your keyframes */
+@keyframes vibrate {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes dash {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ✅ Base styles (optional) */
+@layer base {
+  body {
+    @apply bg-white text-black antialiased;
+    font-family: var(--font-inter);
+  }
+}
+
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* for navbar */
+.nav-link {
+  @apply text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition;
+}
+
