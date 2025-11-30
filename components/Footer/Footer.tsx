@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer 
       id="contact"
-      className="text-white relative w-full bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat py-16 md:py-24 px-4 md:px-0 overflow-hidden">
+      className="text-white relative w-full bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')] bg-cover bg-center bg-no-repeat py-16 md:py-24 px-4 md:px-0 overflow-hidden">
 
       <div className="max-w-4xl mx-auto p-4 bg-white/10 backdrop-blur-md rounded-3xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-8">

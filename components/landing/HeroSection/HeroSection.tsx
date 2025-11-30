@@ -51,7 +51,7 @@ export default function HeroSection() {
 
   return (
     <section className="pt-40 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[160vh]
-        bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat">
+        bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')] bg-cover bg-center bg-no-repeat">
       {/* Title */}
       <h1 className="hero-title text-3xl md:text-4xl font-semibold text-[#E5C27A] leading-snug">
         A Premium Riverside Golfing & Living Destination

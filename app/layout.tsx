@@ -4,6 +4,11 @@ import { allFontVariables } from "@/utils/fonts";
 
 export const metadata: Metadata = {
   title: "Aliens Hub — Premium Plotted Land in Hyderabad",
+  icons: {
+    icon: "/favicon.ico",         // default icon
+    shortcut: "/favicon.ico",        // alternative
+    apple: "/apple-touch-icon.png",
+  },
   description: "Invest in premium plots at Aliens Hub — Hyderabad’s most luxurious integrated township with unmatched connectivity and amenities.",
   openGraph: {
     title: "Aliens Hub — Premium Plotted Land in Hyderabad",

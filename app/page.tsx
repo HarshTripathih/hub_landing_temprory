@@ -10,21 +10,17 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alienshub.in"),
-  title: "Aliens Hub — Web Development, IT Solutions & SaaS Services",
-  description:
-    "Aliens Hub provides web development, SaaS products, AI automation, and IT services. Empowering businesses with modern tech solutions.",
+  title: "Aliens Hub",
+  description: "Invest in premium plots at Aliens Hub — Hyderabad’s most luxurious integrated township with unmatched connectivity and amenities.",
   keywords: [
     "Aliens Hub",
-    "web development",
-    "Next.js agency",
-    "SaaS development",
-    "IT solutions",
-    "website development India",
+    "realestate",
+    "plots in hyderabad",
+    "luxury villa plots",
   ],
   openGraph: {
-    title: "Aliens Hub — Premium Web Development Agency",
-    description:
-      "Modern websites, SaaS apps, cloud solutions and automation — built for speed, scale, and performance.",
+    title: "Aliens Hub",
+    description: "Invest in premium plots at Aliens Hub — Hyderabad’s most luxurious integrated township with unmatched connectivity and amenities.",
     url: "https://alienshub.in",
     siteName: "Aliens Hub",
     type: "website",
@@ -32,12 +28,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aliens Hub — Web Development & SaaS Services",
+    title: "Aliens Hub ",
     images: ["/og.png"],
   },
   robots: "index, follow",
   alternates: {
-    canonical: "https://alienshub.in",
+    canonical: "https://alienshubproject.com",
+  },
+  icons: {
+    icon: "/favicon.ico",         // default icon
+    shortcut: "/favicon.ico",        // alternative
+    apple: "/apple-touch-icon.png",
   },
 };
 
