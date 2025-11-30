@@ -2,7 +2,6 @@
 import Footer from "@/components/Footer/Footer";
 import EnquiryModal from "@/components/Modal/EnquiryForm";
 import AboutSection from "@/components/landing/AboutSection/AboutSection";
-import ContactSection from "@/components/landing/ContactSection/ContactSection";
 import HeroSection from "@/components/landing/HeroSection/HeroSection";
 import Navbar from "@/components/Navbar/Navbar";
 import type { Metadata } from "next";
@@ -66,8 +65,7 @@ export default function Page() {
         <Navbar/>
         <HeroSection/>
         <EnquiryModal />
-        <AboutSection/>
-        <ContactSection/>
+        {/* <AboutSection/> */}
         <Footer/>
       </main>
     </>

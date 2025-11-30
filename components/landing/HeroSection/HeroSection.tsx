@@ -24,7 +24,7 @@ export default function HeroSection() {
 
   const handleDownload = () => {
     if (hasAccess) {
-      window.open("/brochure.pdf", "_blank");
+      window.open("/Hub-Brochure.pdf", "_blank");
     } else {
       document.getElementById("enquiryModal")?.classList.remove("hidden");
     }

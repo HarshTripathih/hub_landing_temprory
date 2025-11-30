@@ -12,19 +12,20 @@ export default function Navbar() {
       <div
         className="
           w-[95%] max-w-5xl 
-          bg-black/40 
+          bg-white/20 
           backdrop-blur-xl 
+          shadow-lg
           rounded-full 
           px-6 md:px-10 py-4 
           flex items-center justify-between
-          text-white
+          text-black
         "
       >
-        {/* LEFT SIDE MENU — HIDDEN ON MOBILE */}
+        {/* LEFT LOGO */}
         <div className="flex items-center gap-8 text-sm">
           <Link href="/">
             <Image 
-              src="https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/logo/hub_logo.png"       // <-- update with your logo path
+              src="https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/logo/hub_logo.png"
               alt="Logo"
               width={60}
               height={40}
@@ -33,27 +34,19 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* CENTER LOGO */}
-        {/* <div className="flex items-center gap-2 text-lg font-semibold">
-          <div className="w-5 h-5 rounded-full border-2 border-white flex items-center justify-center">
-            <div className="w-2 h-2 bg-white rounded-full" />
-          </div>
-          ruleoftrees
-        </div> */}
+        {/* RIGHT MENU (Desktop) */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          {/* <Link href="#about" className="font-bold text-lg text-gray-100 hover:text-black transition">About</Link> */}
 
-        {/* RIGHT SIDE MENU — HIDDEN ON MOBILE */}
-        <div className="hidden md:flex items-center gap-8 text-sm">
-          <Link href="#about">About</Link>
-          {/* Contact Button */}
           <Link
             href="#contact"
-            className="bg-white text-black px-5 py-1.5 rounded-full font-medium shadow"
+            className="bg-black text-white px-5 py-1.5 rounded-full font-medium shadow hover:bg-gray-900 transition"
           >
             Contact
           </Link>
         </div>
 
-        {/* MOBILE HAMBURGER BUTTON */}
+        {/* MOBILE HAMBURGER */}
         <button
           className="md:hidden text-3xl"
           onClick={() => setOpen(!open)}
@@ -64,21 +57,27 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="
-          absolute top-20 
-          w-[90%] max-w-5xl 
-          bg-black/70 backdrop-blur-xl 
-          rounded-2xl 
-          p-6 
-          text-white 
-          flex flex-col gap-5
-          md:hidden
-        ">
-          <Link href="#about" onClick={() => setOpen(false)}>About</Link>
+        <div
+          className="
+            absolute top-20 
+            w-[90%] max-w-5xl 
+            bg-white/80 
+            backdrop-blur-xl 
+            border border-white/10
+            rounded-2xl 
+            p-6 
+            text-black
+            shadow-xl
+            flex flex-col gap-5
+            md:hidden
+          "
+        >
+          {/* <Link href="#about" onClick={() => setOpen(false)}>About</Link> */}
+
           <Link
             href="#contact"
             onClick={() => setOpen(false)}
-            className="bg-white text-black px-5 py-2 rounded-full text-center font-medium shadow"
+            className="bg-black text-white px-5 py-2 rounded-full text-center font-medium shadow"
           >
             Contact
           </Link>

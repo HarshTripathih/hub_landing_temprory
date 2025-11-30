@@ -1,11 +1,104 @@
+import HUBForm from "../Forms/hubform";
+import {
+  Phone,
+  Mail,
+  Twitter,
+  Youtube,
+  Instagram
+} from "lucide-react";
+
 export default function Footer() {
   return (
-    <footer className="w-full px-1 md:px-0 py-4 md:py-10 bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat">
-      <div className="max-w-4xl mx-auto bg-white px-6 py-3 text-black border border-white rounded-4xl">
-        <p className="text-center">
-          © {new Date().getFullYear()} Aliens Hub — All Rights Reserved.
+    <footer 
+      id="contact"
+      className="text-white relative w-full bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat py-16 md:py-24 px-4 md:px-0 overflow-hidden">
+
+      <div className="max-w-4xl mx-auto p-4 bg-white/10 backdrop-blur-md rounded-3xl">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">
+          Get Enquiry
+        </h2>
+
+        <p className="mb-6 text-gray-300">
+          Fill out the form and we’ll get back to you within 24 hours.
         </p>
+
+        <HUBForm/>
       </div>
+      {/* MAIN CONTENT WRAPPER */}
+      <div className="mt-10 max-w-7xl mx-auto px-6 relative flex flex-col md:flex-row items-center justify-between gap-10">
+
+        {/* CENTER TEXT */}
+        <div className="max-w-lg text-center md:text-left flex-1">
+          <p className="text-white text-lg md:text-lg font-playfair leading-snug text-justify max-w-2xl mx-auto md:mx-0">
+            Our website is under construction. Check back soon for updates on
+            plot availability & upcoming events. We look forward to welcoming
+            you to an exceptional golfing and living experience!
+          </p>
+        </div>
+
+        {/* RIGHT Golf Ball */}
+        <img
+          src="https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/logo/hub_logo.png"
+          alt="golf ball"
+          className="w-28 md:w-40 lg:w-48 animate-float"
+        />
+      </div>
+
+{/* CONTACT + SOCIAL SECTION */}
+<div className="mt-10 w-full flex justify-center">
+  <div
+    className="
+      flex flex-wrap items-center justify-center
+      gap-8 md:gap-12
+      text-white text-sm md:text-base
+    "
+  >
+    {/* Phone */}
+    <a href="tel:+917330640040" className="flex items-center gap-2 hover:opacity-80 transition">
+      <Phone className="w-5 h-5" />
+      <span>+91 73 3064 0040</span>
+    </a>
+
+    {/* Email */}
+    <a href="mailto:sales@haldi.golf" className="flex items-center gap-2 hover:opacity-80 transition">
+      <Mail className="w-5 h-5" />
+      <span>sales@aliensgroup.in</span>
+    </a>
+
+    {/* YouTube */}
+    <a href="https://www.youtube.com/@AliensHubhyderabad" target="_blank" className="flex items-center gap-2 hover:opacity-80 transition">
+      <Youtube className="w-5 h-5" />
+      <span>YouTube</span>
+    </a>
+
+    {/* Instagram */}
+    <a href="https://www.instagram.com/aliens.hub/" target="_blank" className="flex items-center gap-2 hover:opacity-80 transition">
+      <Instagram className="w-5 h-5" />
+      <span>Instagram</span>
+    </a>
+  </div>
+</div>
+
+{/* COPYRIGHT SECTION */}
+<div className="mt-12 px-6 flex justify-center">
+  <div
+    className="
+      max-w-xl w-full 
+      bg-white/40 
+      backdrop-blur-xl
+      shadow-lg 
+      px-6 py-3 
+      rounded-full 
+      text-black
+    "
+  >
+    <p className="text-center text-sm md:text-base font-medium">
+      © {new Date().getFullYear()} Aliens Hub — All Rights Reserved.
+    </p>
+  </div>
+</div>
+
+
     </footer>
   );
 }
