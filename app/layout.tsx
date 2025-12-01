@@ -3,17 +3,36 @@ import "./globals.css";
 import { allFontVariables } from "@/utils/fonts";
 
 export const metadata: Metadata = {
-  title: "Aliens Hub — Premium Plotted Land in Hyderabad",
+  metadataBase: new URL("https://alienshubproject.com"),
+  title: "Aliens Hub — Premium Plotted Land in Hyderabad | 700+ Acre Luxury Township",
+  description:
+    "Welcome to Aliens Hub — a 700+ acre luxury township on Srisailam Highway featuring an 18-hole golf course, world-class amenities, DTCP/RERA-approved premium plots, and seamless connectivity to Hyderabad Airport and ORR.",
+  keywords: [
+    "Aliens Hub",
+    "Aliens Hub Hyderabad",
+    "Aliens Hub Srisailam Highway",
+    "plots in Hyderabad",
+    "premium villa plots Hyderabad",
+    "luxury plots in Hyderabad",
+    "golf course plots Hyderabad",
+    "DTCP approved plots",
+    "RERA approved plots",
+    "open plots near Hyderabad Airport",
+    "real estate Hyderabad",
+    "investment plots Hyderabad",
+  ],
   icons: {
-    icon: "/favicon.ico",         // default icon
-    shortcut: "/favicon.ico",        // alternative
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  description: "Invest in premium plots at Aliens Hub — Hyderabad’s most luxurious integrated township with unmatched connectivity and amenities.",
   openGraph: {
     title: "Aliens Hub — Premium Plotted Land in Hyderabad",
-    description: "Explore premium plotted developments by Aliens Group.",
-    url: "https://alienshub.com",
+    description:
+      "Explore Aliens Hub — a 700+ acre premium township featuring hilltop, forest-view, and golf-facing plots with world-class amenities.",
+    url: "https://alienshubproject.com",
+    siteName: "Aliens Hub",
+    type: "website",
     images: [
       {
         url: "/images/alienshub-og.jpg",
@@ -25,9 +44,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aliens Hub — Premium Plotted Land",
-    description: "Your investment destination at Hyderabad’s fastest-growing hub.",
+    title: "Aliens Hub — Premium Plotted Land in Hyderabad",
+    description:
+      "Your ideal investment destination on Hyderabad’s Srisailam Highway — 700+ acre luxury township with golf-course-facing plots.",
     images: ["/images/alienshub-og.jpg"],
+  },
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://alienshubproject.com",
   },
 };
 

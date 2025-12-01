@@ -84,12 +84,12 @@ export default function Footer() {
   <div
     className="
       max-w-xl w-full 
-      bg-white/40 
-      backdrop-blur-xl
+      bg-white/10 
+      backdrop-blur-md
       shadow-lg 
       px-6 py-3 
       rounded-full 
-      text-black
+      text-white
     "
   >
     <p className="text-center text-sm md:text-base font-medium">

@@ -16,7 +16,7 @@ export default function Navbar() {
           backdrop-blur-xl 
           shadow-lg
           rounded-full 
-          px-6 md:px-10 py-4 
+          px-6 md:px-10 py-2 md:py-4
           flex items-center justify-between
           text-black
         "
@@ -29,15 +29,13 @@ export default function Navbar() {
               alt="Logo"
               width={60}
               height={40}
-              className="object-contain"
+              className="object-contain w-10 h-auto md:w-[60px]"
             />
           </Link>
         </div>
 
         {/* RIGHT MENU (Desktop) */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {/* <Link href="#about" className="font-bold text-lg text-gray-100 hover:text-black transition">About</Link> */}
-
           <Link
             href="#contact"
             className="bg-black text-white px-5 py-1.5 rounded-full font-medium shadow hover:bg-gray-900 transition"
@@ -72,8 +70,6 @@ export default function Navbar() {
             md:hidden
           "
         >
-          {/* <Link href="#about" onClick={() => setOpen(false)}>About</Link> */}
-
           <Link
             href="#contact"
             onClick={() => setOpen(false)}

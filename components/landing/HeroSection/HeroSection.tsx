@@ -50,16 +50,16 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="pt-40 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[160vh]
+    <section className="pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[160vh]
         bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')] bg-cover bg-center bg-no-repeat">
       {/* Title */}
       <h1 className="hero-title text-3xl md:text-4xl font-semibold text-[#E5C27A] leading-snug">
-        A Premium Riverside Golfing & Living Destination
+        A Premium Golfing & Living Destination
       </h1>
 
       {/* Subtitle */}
       <p
-        className="hero-desc max-w-4xl mx-auto mt-4 text-sm md:text-xl text-gray-100 leading-snug text-justify
+        className="hero-desc max-w-4xl mx-auto mt-4 text-lg md:text-2xl text-white leading-snug text-justify
                   bg-white/10 backdrop-blur-md p-4 rounded-xl font-cormorant"
       >
         Welcome to Aliens Hub — a 700+ acre luxury township on Srisailam Highway, 
