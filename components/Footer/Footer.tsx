@@ -30,7 +30,7 @@ export default function Footer() {
         {/* CENTER TEXT */}
         <div className="max-w-lg text-center md:text-left flex-1">
           <p className="text-white text-lg md:text-lg font-playfair leading-snug text-justify max-w-2xl mx-auto md:mx-0">
-            Our website is under construction. Check back soon for updates on
+            Our Landing Page is under construction. Check back soon for updates on
             plot availability & upcoming events. We look forward to welcoming
             you to an exceptional golfing and living experience!
           </p>
@@ -40,7 +40,7 @@ export default function Footer() {
         <img
           src="https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/logo/hub_logo.png"
           alt="golf ball"
-          className="w-28 md:w-40 lg:w-48 animate-float"
+          className="w-24 md:w-28 lg:w-32 animate-float"
         />
       </div>
 

@@ -50,16 +50,21 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[160vh]
-        bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')] bg-cover bg-center bg-no-repeat">
+    <section
+        className="relative pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[160vh]
+        bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')]
+        bg-cover bg-center bg-no-repeat"
+      >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/10"></div>
       {/* Title */}
-      <h1 className="hero-title text-3xl md:text-4xl font-semibold text-[#E5C27A] leading-snug">
+      <h1 className="relative z-10 hero-title text-3xl md:text-4xl font-semibold text-[#E5C27A] leading-snug">
         A Premium Golfing & Living Destination
       </h1>
 
       {/* Subtitle */}
       <p
-        className="hero-desc max-w-4xl mx-auto mt-4 text-lg md:text-2xl text-white leading-snug text-justify
+        className=" relative z-10 hero-desc max-w-4xl mx-auto mt-4 text-lg md:text-2xl text-white leading-snug text-justify
                   bg-white/10 backdrop-blur-md p-4 rounded-xl font-cormorant"
       >
         Welcome to Aliens Hub — a 700+ acre luxury township on Srisailam Highway, 
@@ -73,7 +78,7 @@ export default function HeroSection() {
 
 
       {/* VIDEO BLOCK */}
-      <div className="hero-video-wrapper max-w-7xl mx-auto mt-10 rounded-xl overflow-hidden shadow-2xl relative">
+      <div className="hero-video-wrapper max-w-6xl mx-auto mt-10 rounded-xl overflow-hidden shadow-2xl relative">
 
         <video
           ref={videoRef}
@@ -81,7 +86,7 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          className="w-full h-[350px] md:h-[650px] object-cover"
+          className="w-full h-[350px] md:h-[650px] object-cover md:object-contain"
         >
           <source src="https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/Videos/hero_hub_landing.mp4" type="video/mp4" />
         </video>
@@ -89,7 +94,7 @@ export default function HeroSection() {
         {/* Play / Pause Button */}
         <button
           onClick={toggleVideo}
-          className="absolute bottom-4 right-4 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full"
+          className="absolute bottom-4 left-4 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full"
         >
           {isPlaying ? "⏸" : "▶️"}
         </button>
