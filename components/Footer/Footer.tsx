@@ -25,7 +25,7 @@ export default function Footer() {
         <HUBForm/>
       </div>
       {/* MAIN CONTENT WRAPPER */}
-      <div className="mt-10 max-w-7xl mx-auto px-6 relative flex flex-col md:flex-row items-center justify-between gap-10">
+      <div className="mt-10 max-w-6xl mx-auto px-6 relative flex flex-col md:flex-row items-center justify-between gap-10">
 
         {/* CENTER TEXT */}
         <div className="max-w-lg text-center md:text-left flex-1">
