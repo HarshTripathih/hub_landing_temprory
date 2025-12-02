@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { allFontVariables } from "@/utils/fonts";
+import Script from "next/script";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alienshubproject.com"),
   title: "Aliens Hub — Premium Plotted Land in Hyderabad | 700+ Acre Luxury Township",
   description:
     "Welcome to Aliens Hub — a 700+ acre luxury township on Srisailam Highway featuring an 18-hole golf course, world-class amenities, DTCP/RERA-approved premium plots, and seamless connectivity to Hyderabad Airport and ORR.",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },  
   keywords: [
     "Aliens Hub",
     "Aliens Hub Hyderabad",
@@ -62,6 +67,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* Microsoft Clarity Script */}
+      <Script id="ms-clarity" strategy="afterInteractive">
+        {`
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
+        `}
+      </Script>
       <body
         className={allFontVariables.join(" ")}
       >
