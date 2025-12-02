@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alienshubproject.com"),
-  title: "Aliens Hub – 700+ Acre Luxury Township on Srisailam Highway | Golf Course Plots",
+  title: "Aliens HUB | Premium Hilltop Plots",
   description:
     "Welcome to Aliens Hub — a 700+ acre ultra-luxury township on Srisailam Highway featuring an exclusive 18-hole golf course, world-class amenities, DTCP/RERA-approved plots, and seamless access to Hyderabad Airport & ORR. Explore hilltop, forest-view, and golf-facing premium villa plots for refined living and future-ready investment.",
   keywords: [

@@ -192,7 +192,7 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
   return (
     <div className="mt-16 mb-10 md:mt-10 md:mb-10 animate-fade-in-up">
       <h3 className="text-[28px] font-regular mb-6 text-center text-white font-cormorant">
-        {submitted ? "Thank You!" : "Schedule Your Call Now"}
+        {submitted ? "Thank You!" : ""}
       </h3>
 
       <div className="max-w-lg mx-auto w-full">
@@ -304,7 +304,7 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
                 className="w-6 h-6 accent-[#d5c9b3]"
               />
               <label className="text-white text-[12px] leading-relaxed">
-                Yes, I would like to receive updates and promotional offers from Aliens Group
+                Yes, I would like to receive updates and promotional offers from Aliens Hub
               </label>
             </div>
 

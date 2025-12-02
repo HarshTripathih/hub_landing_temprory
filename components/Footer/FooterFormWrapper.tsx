@@ -10,15 +10,15 @@ export default function FooterFormWrapper() {
     <div>
       {/* Hide these after success */}
       {!isSubmitted && (
-        <>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            Get Enquiry
+        <div className="mt-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+            Book Your Visit Now
           </h2>
 
-          <p className="mb-6 text-gray-300">
+          <p className="mb-6 text-gray-300 text-[12px] md:text-lg">
             Fill out the form and we’ll get back to you within 24 hours.
           </p>
-        </>
+        </div>
       )}
 
       {/* Form */}

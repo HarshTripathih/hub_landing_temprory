@@ -13,14 +13,14 @@ export default function Footer() {
   return (
     <footer 
       id="contact"
-      className="text-white relative w-full bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')] bg-cover bg-center bg-no-repeat py-16 md:py-24 px-4 md:px-0 overflow-hidden">
+      className="text-white relative w-full bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')] bg-cover bg-center bg-no-repeat pt-16 md:pt-24 px-4 md:px-0 overflow-hidden">
 
-      <div className="max-w-4xl mx-auto p-4 bg-white/10 backdrop-blur-md rounded-3xl">
+      <div className="max-w-2xl mx-auto p-4 bg-white/10 backdrop-blur-md rounded-3xl">
         <FooterFormWrapper />  {/* 👈 NEW wrapper */}
       </div>
 
       {/* MAIN CONTENT WRAPPER */}
-      <div className="mt-10 max-w-6xl mx-auto px-6 relative flex flex-col md:flex-row items-center justify-between gap-10">
+      <div className="mt-14 md:mt-28 max-w-6xl mx-auto px-6 relative flex flex-col md:flex-row items-center justify-between gap-10">
 
         {/* CENTER TEXT */}
         <div className="max-w-lg text-center md:text-left flex-1">
@@ -44,7 +44,7 @@ export default function Footer() {
   <div
     className="
       flex flex-wrap items-center justify-center
-      gap-8 md:gap-12
+      gap-8 md:gap-20
       text-white text-sm md:text-base
     "
   >
@@ -75,7 +75,7 @@ export default function Footer() {
 </div>
 
 {/* COPYRIGHT SECTION */}
-<div className="mt-12 px-6 flex justify-center">
+<div className="mt-12 mb-8 px-6 flex justify-center">
   <div
     className="
       max-w-xl w-full 

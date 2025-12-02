@@ -40,7 +40,7 @@ export default function Navbar() {
             href="#contact"
             className="bg-black text-white px-5 py-1.5 rounded-full font-medium shadow hover:bg-gray-900 transition"
           >
-            Contact
+            Contact Us
           </Link>
         </div>
 
@@ -75,7 +75,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="bg-black text-white px-5 py-2 rounded-full text-center font-medium shadow"
           >
-            Contact
+            Contact Us
           </Link>
         </div>
       )}

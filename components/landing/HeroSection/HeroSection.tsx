@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { CustomButton } from "@/uiComponents/Button";
+import IconGridComponent from "@/components/IconGrid/iconGridComponent";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -51,30 +52,28 @@ export default function HeroSection() {
 
   return (
     <section
-        className="relative pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[160vh]
+        className="relative pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[190vh]
         bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')]
         bg-cover bg-center bg-no-repeat"
       >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/10"></div>
       {/* Title */}
-      <h1 className="relative z-10 hero-title text-3xl md:text-4xl font-semibold text-[#E5C27A] leading-snug">
-        A Premium Golfing & Living Destination
+      <h1 className="relative z-10 hero-title text-2xl md:text-4xl font-semibold text-[#E5C27A] leading-snug">
+        Hyderabad’s Only <br /> Premium Hilltop Villa Plots
       </h1>
+
 
       {/* Subtitle */}
       <p
-        className=" relative z-10 hero-desc max-w-4xl mx-auto mt-4 text-lg md:text-2xl text-white leading-snug text-justify
+        className="relative z-10 hero-desc max-w-4xl mx-auto mt-4 md:mt-8 text-lg md:text-2xl text-white leading-snug text-justify
                   bg-white/10 backdrop-blur-md p-4 rounded-xl font-cormorant"
       >
         Welcome to Aliens Hub — a 700+ acre luxury township on Srisailam Highway, 
-        built around an exclusive 18-hole golf course, world-class amenities, 
-        and breathtaking natural terrains. With DTCP/RERA approvals, 
-        superior infrastructure, and seamless access to the Airport and ORR, 
-        the community offers unmatched trust, lifestyle, and long-term value. 
-        Explore hilltop, forest-view, and golf-facing plots designed for those who seek refinement and future-ready investment. 
-        Visit us to experience the scale and serenity in person.
+        built around an exclusive 18-hole golf course, world-class amenities, and breathtaking natural terrains.
       </p>
+
+      <IconGridComponent/>
 
 
       {/* VIDEO BLOCK */}
@@ -101,10 +100,10 @@ export default function HeroSection() {
       </div>
 
       {/* CTA */}
-      <div className="mt-10 flex justify-center">
+      <div className="mt-10 flex justify-center items-center">
         <CustomButton
           onClick={handleDownload}
-          text="Enquire Now"
+          text="Download Brochure"
           className="px-6 py-3 text-white bg-[#1F4F59] border border-white  hover:bg-[#183E45] transition-all"
         />
       </div>
