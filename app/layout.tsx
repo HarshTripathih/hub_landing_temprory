@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { allFontVariables } from "@/utils/fonts";
 import Script from "next/script";
+import UTMTracker from "@/utmTracker/UTMTracker";
+import ZoomBlocker from "@/components/zoomBlocker/ZoomBlocker";
+import ToastProvider from "@/uiComponents/ToastProvider";
 
 
 export const metadata: Metadata = {
@@ -80,7 +83,10 @@ export default function RootLayout({
       <body
         className={allFontVariables.join(" ")}
       >
+        <UTMTracker />
+        <ZoomBlocker />
         {children}
+        <ToastProvider />
       </body>
     </html>
   );

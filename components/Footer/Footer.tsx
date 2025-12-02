@@ -1,4 +1,3 @@
-import HUBForm from "../Forms/hubform";
 import {
   Phone,
   Mail,
@@ -6,24 +5,20 @@ import {
   Youtube,
   Instagram
 } from "lucide-react";
+import FooterFormWrapper from "./FooterFormWrapper";
+
 
 export default function Footer() {
+  
   return (
     <footer 
       id="contact"
       className="text-white relative w-full bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')] bg-cover bg-center bg-no-repeat py-16 md:py-24 px-4 md:px-0 overflow-hidden">
 
       <div className="max-w-4xl mx-auto p-4 bg-white/10 backdrop-blur-md rounded-3xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">
-          Get Enquiry
-        </h2>
-
-        <p className="mb-6 text-gray-300">
-          Fill out the form and we’ll get back to you within 24 hours.
-        </p>
-
-        <HUBForm/>
+        <FooterFormWrapper />  {/* 👈 NEW wrapper */}
       </div>
+
       {/* MAIN CONTENT WRAPPER */}
       <div className="mt-10 max-w-6xl mx-auto px-6 relative flex flex-col md:flex-row items-center justify-between gap-10">
 

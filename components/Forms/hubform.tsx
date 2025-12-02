@@ -10,7 +10,9 @@ import type { UTMParams, OutbrainParams } from '@/interfaces/marketing.interface
 import { getWithExpiry } from '@/utils/localstorage';
 import { CustomButton } from "@/uiComponents/Button";
 
-
+interface HubBrochureFormProps {
+  onSuccess?: () => void;
+}
 
 interface FormData {
   name: string;
@@ -30,7 +32,7 @@ interface utmWebsiteFormProps {
 }
 
 
-const HUBForm: React.FC<utmWebsiteFormProps> = ({ utmWebContext }) => {
+const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSuccess, utmWebContext }) => {
   const [query, setQuery] = useState("");
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -164,15 +166,17 @@ const HUBForm: React.FC<utmWebsiteFormProps> = ({ utmWebContext }) => {
         } catch (err) {
           console.error("Error triggering Outbrain conversion:", err);
         }
-
+     
         // ✅ Optional: clear after success
         // localStorage.removeItem("utmParams");
         // localStorage.removeItem("outbrainParams");
         // setUtmParams({});
         // setOutbrainParams({});
+        onSuccess?.();
       } else {
         setStatus(data.error || "Something went wrong.");
       }
+      
     } catch (err) {
       toast.update(loadingToast, {
         render: "Something went wrong!",

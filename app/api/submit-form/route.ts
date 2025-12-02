@@ -144,10 +144,10 @@ export async function POST(request: NextRequest) {
       '00N2x000003TZ73': utmParams?.utm_medium || utmWebContext?.utm_medium || '',     // ✅ optional chaining
       '00N9C000000No9S': 'Digital',
       '00N2x000003TZ75': utmParams?.utm_term || '',
-      '00N2x000003TZ6T': utmParams?.utm_source || utmWebContext?.utm_source || outbrainParams?.secondary_source || 'Website', //secondary source
-      '00N2x000003TZ6f': 'Website', //tertiory
+      '00N2x000003TZ6T': utmParams?.utm_source || utmWebContext?.utm_source || outbrainParams?.secondary_source || 'Hub Landing', //secondary source
+      '00N2x000003TZ6f': 'Hub Landing', //tertiory
       '00N2x000003TZ71': utmParams?.utm_campaign || utmWebContext?.utm_campaign || '',
-      '00N2x000003TZ74': utmParams?.utm_source || utmWebContext?.utm_source || outbrainParams?.secondary_source || 'website', //utm_source secondary source
+      '00N2x000003TZ74': utmParams?.utm_source || utmWebContext?.utm_source || outbrainParams?.secondary_source || 'Hub Landing', //utm_source secondary source
       '00N2x000003TZ72': utmParams?.utm_content || utmWebContext?.utm_content || '', //utm_content
       '00N2x000006Owm3': 'Paid',
       lead_source: 'Digital',
