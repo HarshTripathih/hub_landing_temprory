@@ -9,6 +9,7 @@ import { ChevronDownIcon } from "lucide-react";
 import type { UTMParams, OutbrainParams } from '@/interfaces/marketing.interface';
 import { getWithExpiry } from '@/utils/localstorage';
 import { CustomButton } from "@/uiComponents/Button";
+import { pushGTMEvent } from "@/utmTracker/gtm";
 
 interface HubBrochureFormProps {
   onSuccess?: () => void;
@@ -128,26 +129,34 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
         setConsent(true);
 
         // ⚡️ Trigger Google Tag Manager event
-        try {
-          if (typeof window !== "undefined") {
-            const uniqueLeadId = 'lead_' + Date.now();
-            (window as any).dataLayer = (window as any).dataLayer || [];
-            (window as any).dataLayer.push({
-              event: 'leadFormSuccess',
-              leadId: uniqueLeadId,
-              project: formData.selectproject,
-              utm_campaign: payload?.utmParams?.utm_campaign || utmWebContext?.utm_campaign,
-              utm_source: payload?.utmParams?.utm_source || utmWebContext?.utm_source,
-              utm_medium: payload?.utmParams?.utm_medium || utmWebContext?.utm_medium,
-              utm_content: payload?.utmParams?.utm_content || utmWebContext?.utm_content,
-            });
-            console.log("✅ GTM leadFormSuccess event pushed", formData.selectproject);
-          } else {
-            console.warn("⚠️ GTM not initialized, skipping tracking.");
-          }
-        } catch (err) {
-          console.error("Error pushing GTM event:", err);
-        }
+        // try {
+        //   if (typeof window !== "undefined") {
+        //     const uniqueLeadId = 'lead_' + Date.now();
+        //     (window as any).dataLayer = (window as any).dataLayer || [];
+        //     (window as any).dataLayer.push({
+        //       event: 'leadFormSuccess',
+        //       leadId: uniqueLeadId,
+        //       project: formData.selectproject,
+        //       utm_campaign: payload?.utmParams?.utm_campaign || utmWebContext?.utm_campaign,
+        //       utm_source: payload?.utmParams?.utm_source || utmWebContext?.utm_source,
+        //       utm_medium: payload?.utmParams?.utm_medium || utmWebContext?.utm_medium,
+        //       utm_content: payload?.utmParams?.utm_content || utmWebContext?.utm_content,
+        //     });
+        //     console.log("✅ GTM leadFormSuccess event pushed", formData.selectproject);
+        //   } else {
+        //     console.warn("⚠️ GTM not initialized, skipping tracking.");
+        //   }
+        // } catch (err) {
+        //   console.error("Error pushing GTM event:", err);
+        // }
+        pushGTMEvent({
+          event: "leadFormSuccess",
+          action: "Form Submitted",
+          utm_campaign: payload?.utmParams?.utm_campaign || utmWebContext?.utm_campaign,
+          utm_source: payload?.utmParams?.utm_source || utmWebContext?.utm_source,
+          utm_medium: payload?.utmParams?.utm_medium || utmWebContext?.utm_medium,
+          utm_content: payload?.utmParams?.utm_content || utmWebContext?.utm_content,
+        });
 
         // ✅ Trigger Outbrain conversion safely
         try {
