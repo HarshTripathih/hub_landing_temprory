@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useWebsiteUTMCampaign } from '@/utils/utmHelper';
+import { pushGTMEvent } from '@/utmTracker/gtm';
 
 const BottomCtaStrip = () => {
   const [hasAccess, setHasAccess] = useState(false);
@@ -18,21 +19,6 @@ const BottomCtaStrip = () => {
 
     return () => window.removeEventListener("brochure-updated", checkCookie);
   }, []);
-
-  // ------------------------------------------
-  // 🔹 GTM PUSH (Reusable)
-  // ------------------------------------------
-  const pushGTMEvent = (data: Record<string, any>) => {
-    try {
-      if (typeof window !== "undefined") {
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push(data);
-        console.log("📩 GTM Event Pushed:", data);
-      }
-    } catch (err) {
-      console.error("❌ GTM push error:", err);
-    }
-  };
 
   // ------------------------------------------
   // 🔹 Brochure Handler
