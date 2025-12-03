@@ -26,10 +26,37 @@ export default function HeroSection() {
     return () => window.removeEventListener("brochure-updated", checkCookie);
   }, []);
 
+    // ------------------------------------------
+  // 🔹 GTM PUSH (Reusable)
+  // ------------------------------------------
+  const pushGTMEvent = (data: Record<string, any>) => {
+    try {
+      if (typeof window !== "undefined") {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push(data);
+        console.log("📩 GTM Event Pushed:", data);
+      }
+    } catch (err) {
+      console.error("❌ GTM push error:", err);
+    }
+  };
+
   const handleDownload = () => {
     if (hasAccess) {
       window.open("/Hub-Brochure.pdf", "_blank");
+      // GTM: Brochure Direct Download
+      pushGTMEvent({
+        event: "brochureDirectDownload",
+        source: "Hero Section",
+      });
     } else {
+      // GTM: Enquire Click (no access)
+      pushGTMEvent({
+        event: "enquireClick",
+        action: "openModal",
+        location: "Hero Section",
+        utm_content: "Download Brochure",
+      });
       // Send dynamic UTM via CustomEvent
       const utmEvent = new CustomEvent("open-enquiry-modal", {
         detail: {
