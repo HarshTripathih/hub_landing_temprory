@@ -1,31 +1,30 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from "react";
 import HUBForm from "../Forms/hubform";
 import { X } from "lucide-react";
-import { useWebsiteUTMCampaign } from "@/utils/utmHelper";
 
 export default function EnquiryModal() {
-  const closeModal = () => {
-    document.getElementById("enquiryModal")?.classList.add("hidden");
-  };
-
-  const campaign = useWebsiteUTMCampaign();
-
-  // UTM state
   const [utmWebContext, setWebUtmContext] = useState<{
     utm_medium: string;
     utm_content: string;
     utm_source: string;
+    utm_campaign: string;
   } | null>(null);
 
-  // ❗ FIX: set UTM only once after component mounts
+  const closeModal = () => {
+    document.getElementById("enquiryModal")?.classList.add("hidden");
+  };
+
+  // Listen for dynamic UTM from BottomCtaStrip
   useEffect(() => {
-    setWebUtmContext({
-      utm_medium: "Hero Section",
-      utm_content: "Enquire Now",
-      utm_source: "Hub Landing",
-    });
+    const handleUtmEvent = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setWebUtmContext(customEvent.detail);
+    };
+
+    window.addEventListener("open-enquiry-modal", handleUtmEvent);
+    return () => window.removeEventListener("open-enquiry-modal", handleUtmEvent);
   }, []);
 
   return (
@@ -46,12 +45,8 @@ export default function EnquiryModal() {
           <X size={24} />
         </button>
 
-        {/* Only render form once UTM is ready */}
-        {utmWebContext && (
-          <HUBForm
-            utmWebContext={{ ...utmWebContext, utm_campaign: campaign }}
-          />
-        )}
+        {/* Render form only when UTM is set */}
+        {utmWebContext && <HUBForm utmWebContext={utmWebContext} />}
       </div>
     </div>
   );

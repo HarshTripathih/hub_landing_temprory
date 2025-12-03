@@ -5,6 +5,7 @@ import EnquiryModal from "@/components/Modal/EnquiryForm";
 import HeroSection from "@/components/landing/HeroSection/HeroSection";
 import Navbar from "@/components/Navbar/Navbar";
 import type { Metadata } from "next";
+import BottomCtaStrip from "@/components/BottomStrip/BottomStrip";
 
 // Import all your client components (no issue)
 
@@ -84,6 +85,7 @@ export default function Page() {
         <HeroSection/>
         <EnquiryModal />
         {/* <AboutSection/> */}
+        <BottomCtaStrip/>
         <Footer/>
       </main>
     </>

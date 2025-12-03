@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Navbar() {
           backdrop-blur-xl 
           shadow-lg
           rounded-full 
-          px-6 md:px-10 py-2 md:py-4
+          px-4 md:px-10 py-2 md:py-4
           flex items-center justify-between
           text-black
         "
@@ -38,7 +39,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <Link
             href="#contact"
-            className="bg-black text-white px-5 py-1.5 rounded-full font-medium shadow hover:bg-gray-900 transition"
+            className="bg-black text-white text-lg px-5 py-4 rounded-full font-medium shadow hover:bg-gray-900 transition"
           >
             Contact Us
           </Link>
@@ -49,8 +50,9 @@ export default function Navbar() {
           className="md:hidden text-3xl"
           onClick={() => setOpen(!open)}
         >
-          ☰
+          {open ? <X className="text-white" size={32} /> : <Menu className="text-white" size={32} />}
         </button>
+
       </div>
 
       {/* MOBILE MENU */}
@@ -59,7 +61,7 @@ export default function Navbar() {
           className="
             absolute top-20 
             w-[90%] max-w-5xl 
-            bg-white/80 
+            bg-white/10 
             backdrop-blur-xl 
             border border-white/10
             rounded-2xl 

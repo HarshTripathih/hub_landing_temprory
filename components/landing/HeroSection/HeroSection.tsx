@@ -5,11 +5,14 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { CustomButton } from "@/uiComponents/Button";
 import IconGridComponent from "@/components/IconGrid/iconGridComponent";
+import { useWebsiteUTMCampaign } from "@/utils/utmHelper";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [hasAccess, setHasAccess] = useState(false);
+
+  const campaign = useWebsiteUTMCampaign();
 
   useEffect(() => {
     const checkCookie = () => {
@@ -27,6 +30,18 @@ export default function HeroSection() {
     if (hasAccess) {
       window.open("/Hub-Brochure.pdf", "_blank");
     } else {
+      // Send dynamic UTM via CustomEvent
+      const utmEvent = new CustomEvent("open-enquiry-modal", {
+        detail: {
+          utm_medium: "Hero Section",
+          utm_content: "Download Brochure",
+          utm_source: "Hub Landing",
+          utm_campaign: campaign,
+        },
+      });
+
+      window.dispatchEvent(utmEvent);
+
       document.getElementById("enquiryModal")?.classList.remove("hidden");
     }
   };
