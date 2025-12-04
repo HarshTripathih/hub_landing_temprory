@@ -82,6 +82,36 @@ export default function RootLayout({
         `}
       </Script>
 
+      {/* Google Ads gtag.js */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}`}
+        strategy="afterInteractive"
+      />
+
+      <Script id="google-ads-gtag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');
+        `}
+      </Script>
+
+      {/* Google Analytics 4 (GA4) */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GGA4_ID}`}
+        strategy="afterInteractive"
+      />
+
+      <Script id="google-analytics-gtag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID}');
+        `}
+      </Script>
+
       {/* Microsoft Clarity Script */}
       <Script id="ms-clarity" strategy="afterInteractive">
         {`
@@ -92,6 +122,8 @@ export default function RootLayout({
           })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
         `}
       </Script>
+
+
       <body
         className={allFontVariables.join(" ")}
       >

@@ -38,59 +38,59 @@ export default function Footer() {
         />
       </div>
 
-{/* CONTACT + SOCIAL SECTION */}
-<div className="mt-10 w-full flex justify-center">
-  <div
-    className="
-      flex flex-wrap items-center justify-center
-      gap-8 md:gap-20
-      text-white text-sm md:text-base
-    "
-  >
-    {/* Phone */}
-    <a href="tel:+917330640040" className="flex items-center gap-2 hover:opacity-80 transition">
-      <Phone className="w-5 h-5" />
-      <span>+91 73 3064 0040</span>
-    </a>
+      {/* CONTACT + SOCIAL SECTION */}
+      <div className="mt-10 w-full flex justify-center">
+        <div
+          className="
+            flex flex-wrap items-center justify-center
+            gap-8 md:gap-20
+            text-white text-sm md:text-base
+          "
+        >
+          {/* Phone */}
+          <a href="tel:+917330640040" className="flex items-center gap-2 hover:opacity-80 transition">
+            <Phone className="w-5 h-5" />
+            <span>+91 73 3064 0040</span>
+          </a>
 
-    {/* Email */}
-    <a href="mailto:sales@haldi.golf" className="flex items-center gap-2 hover:opacity-80 transition">
-      <Mail className="w-5 h-5" />
-      <span>sales@aliensgroup.in</span>
-    </a>
+          {/* Email */}
+          <a href="mailto:sales@haldi.golf" className="flex items-center gap-2 hover:opacity-80 transition">
+            <Mail className="w-5 h-5" />
+            <span>sales@aliensgroup.in</span>
+          </a>
 
-    {/* YouTube */}
-    <a href="https://www.youtube.com/@AliensHubhyderabad" target="_blank" className="flex items-center gap-2 hover:opacity-80 transition">
-      <Youtube className="w-5 h-5" />
-      <span>YouTube</span>
-    </a>
+          {/* YouTube */}
+          <a href="https://www.youtube.com/@AliensHubhyderabad" target="_blank" className="flex items-center gap-2 hover:opacity-80 transition">
+            <Youtube className="w-5 h-5" />
+            <span>YouTube</span>
+          </a>
 
-    {/* Instagram */}
-    <a href="https://www.instagram.com/aliens.hub/" target="_blank" className="flex items-center gap-2 hover:opacity-80 transition">
-      <Instagram className="w-5 h-5" />
-      <span>Instagram</span>
-    </a>
-  </div>
-</div>
+          {/* Instagram */}
+          <a href="https://www.instagram.com/aliens.hub/" target="_blank" className="flex items-center gap-2 hover:opacity-80 transition">
+            <Instagram className="w-5 h-5" />
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
 
-{/* COPYRIGHT SECTION */}
-<div className="mt-12 mb-8 px-6 flex justify-center">
-  <div
-    className="
-      max-w-xl w-full 
-      bg-white/10 
-      backdrop-blur-md
-      shadow-lg 
-      px-6 py-3 
-      rounded-full 
-      text-white
-    "
-  >
-    <p className="text-center text-sm md:text-base font-medium">
-      © {new Date().getFullYear()} Aliens Hub — All Rights Reserved.
-    </p>
-  </div>
-</div>
+      {/* COPYRIGHT SECTION */}
+      <div className="mt-12 mb-8 px-6 flex justify-center">
+        <div
+          className="
+            max-w-xl w-full 
+            bg-white/10 
+            backdrop-blur-md
+            shadow-lg 
+            px-6 py-3 
+            rounded-full 
+            text-white
+          "
+        >
+          <p className="text-center text-sm md:text-base font-medium">
+            © {new Date().getFullYear()} Aliens Hub — All Rights Reserved.
+          </p>
+        </div>
+      </div>
 
 
     </footer>
