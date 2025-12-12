@@ -12,6 +12,16 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [hasAccess, setHasAccess] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
+
 
   // -----------------------------
   // 🎬 VIDEO SWITCHING LOGIC
@@ -134,7 +144,7 @@ export default function HeroSection() {
           ref={videoRef}
           autoPlay
           loop
-          muted
+          muted={isMuted}
           playsInline
           className="w-full h-[350px] md:h-[650px] object-cover md:object-contain"
           key={mainVideo}
@@ -142,13 +152,29 @@ export default function HeroSection() {
           <source src={mainVideo} type="video/mp4" />
         </video>
 
-        <button
-          onClick={toggleVideo}
-          className="absolute bottom-4 left-4 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full"
-        >
-          {isPlaying ? "⏸" : "▶️"}
-        </button>
+        {/* BUTTON GROUP LEFT SIDE */}
+        <div className="absolute bottom-4 left-4 flex flex-row gap-3">
+          
+          {/* Play / Pause */}
+          <button
+            onClick={toggleVideo}
+            className="bg-black/60 hover:bg-black/80 text-white p-3 rounded-full"
+          >
+            {isPlaying ? "⏸" : "▶️"}
+          </button>
+
+          {/* Mute / Unmute */}
+          <button
+            onClick={toggleMute}
+            className="bg-black/60 hover:bg-black/80 text-white p-3 rounded-full"
+          >
+            {isMuted ? "🔇" : "🔊"}
+          </button>
+
+        </div>
       </div>
+
+
 
       {/* ------------------------ */}
       {/* SMALL VIDEO CONTAINERS */}
