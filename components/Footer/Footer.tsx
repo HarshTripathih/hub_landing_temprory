@@ -3,9 +3,11 @@ import {
   Mail,
   Twitter,
   Youtube,
-  Instagram
+  Instagram,
+  ShieldCheck
 } from "lucide-react";
 import FooterFormWrapper from "./FooterFormWrapper";
+import Link from "next/link";
 
 
 export default function Footer() {
@@ -58,6 +60,11 @@ export default function Footer() {
             <Mail className="w-5 h-5" />
             <span>sales@aliensgroup.in</span>
           </a>
+          {/* Privacy Policy */}
+          <Link href="/privacy-policy" className="flex items-center gap-2 hover:opacity-80 transition">
+            <ShieldCheck className="w-5 h-5" />
+            <span>Privacy Policy</span>
+          </Link>
 
           {/* YouTube */}
           <a href="https://www.youtube.com/@AliensHubhyderabad" target="_blank" className="flex items-center gap-2 hover:opacity-80 transition">

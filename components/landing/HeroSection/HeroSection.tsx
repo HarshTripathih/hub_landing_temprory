@@ -175,7 +175,6 @@ export default function HeroSection() {
       </div>
 
 
-
       {/* ------------------------ */}
       {/* SMALL VIDEO CONTAINERS */}
       {/* ------------------------ */}
