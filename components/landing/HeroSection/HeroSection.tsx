@@ -28,33 +28,31 @@ export default function HeroSection() {
   // -----------------------------
   const videos = {
     video1: "https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/Videos/hero_hub_landing.mp4",
-    video2: "https://d1b9peg0jj5bry.cloudfront.net/videos/globalsummit/global_summit1.mp4",
-    video3: "https://d1b9peg0jj5bry.cloudfront.net/videos/globalsummit/global_summit2.mp4",
+    // video2: "https://d1b9peg0jj5bry.cloudfront.net/videos/globalsummit/global_summit1.mp4",
+    // video3: "https://d1b9peg0jj5bry.cloudfront.net/videos/globalsummit/global_summit2.mp4",
   };
 
   const [mainVideo, setMainVideo] = useState(videos.video1);
-  const [smallVideos, setSmallVideos] = useState([
-    videos.video2,
-    videos.video3,
-  ]);
+  // const [smallVideos, setSmallVideos] = useState([
+  //   videos.video2,
+  //   videos.video3,
+  // ]);
 
-  const handleSmallVideoClick = (index: number) => {
-    const clickedVideo = smallVideos[index];
+  // const handleSmallVideoClick = (index: number) => {
+  //   const clickedVideo = smallVideos[index];
+  //   if (mainVideo === clickedVideo) {
+  //     setMainVideo(videos.video1);
+  //     setSmallVideos([videos.video2, videos.video3]);
+  //     return;
+  //   }
 
-    // If clicking again → restore default main video
-    if (mainVideo === clickedVideo) {
-      setMainVideo(videos.video1);
-      setSmallVideos([videos.video2, videos.video3]);
-      return;
-    }
+  //   // Swap logic
+  //   const newSmall = [...smallVideos];
+  //   newSmall[index] = mainVideo;
 
-    // Swap logic
-    const newSmall = [...smallVideos];
-    newSmall[index] = mainVideo;
-
-    setMainVideo(clickedVideo);
-    setSmallVideos(newSmall);
-  };
+  //   setMainVideo(clickedVideo);
+  //   setSmallVideos(newSmall);
+  // };
 
   // -----------------------------
 
@@ -116,7 +114,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[220vh]
+      className="relative pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[190vh]
       bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')]
       bg-cover bg-center bg-no-repeat"
     >
@@ -179,7 +177,7 @@ export default function HeroSection() {
       {/* SMALL VIDEO CONTAINERS */}
       {/* ------------------------ */}
 
-      <div className="flex justify-center gap-6 mt-6">
+      {/* <div className="flex justify-center gap-6 mt-6">
         {smallVideos.map((vid, index) => (
           <div
             key={index}
@@ -195,7 +193,7 @@ export default function HeroSection() {
             />
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* CTA BUTTON */}
       <div className="mt-10 flex justify-center items-center">
