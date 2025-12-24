@@ -70,19 +70,21 @@ const BottomCtaStrip = () => {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 w-full bg-[#3b3f03] text-white flex justify-around py-4 z-40">
+    <div className="md:hidden fixed bottom-0 left-0 w-full text-white flex justify-around gap-x-1 py-1 px-1 z-40">
       <a
         href="tel:917330640040"
         onClick={handleCallClick}
-        className="flex items-center gap-x-2 text-sm"
+        className='border border-slate-100 bg-[#3b3f03] w-1/2 flex justify-center items-center h-[6vh]'
       >
-        <img src="/icons/call.svg" className="w-5 h-5" />
-        <span className="font-inter text-[16px]">Call</span>
+        <div className="flex items-center gap-x-2 text-sm">
+          <img src="/icons/call.svg" className="w-5 h-5" />
+          <span className="font-inter text-[16px]">Call</span>
+        </div>
       </a>
 
       <button
         onClick={handleDownload}
-        className="flex items-center gap-x-2 text-sm"
+        className="flex items-center justify-center gap-x-2 text-sm border border-slate-100 w-1/2 bg-[#3b3f03]"
       >
         <img src="/icons/enquire.svg" className="w-6 h-6" />
         <span className="font-inter text-[16px]">Enquire</span>
