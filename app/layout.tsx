@@ -5,6 +5,7 @@ import Script from "next/script";
 import UTMTracker from "@/utmTracker/UTMTracker";
 import ZoomBlocker from "@/components/zoomBlocker/ZoomBlocker";
 import ToastProvider from "@/uiComponents/ToastProvider";
+import YearEndOfferModal from "@/components/OfferModal/YearEndOfferModal";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alienshubproject.com"),
@@ -210,6 +211,7 @@ export default function RootLayout({
         <UTMTracker />
         <ZoomBlocker />
           {children}
+        <YearEndOfferModal />
         <ToastProvider />
       </body>
     </html>

@@ -6,8 +6,25 @@ import { pushGTMEvent } from '@/utmTracker/gtm';
 
 const BottomCtaStrip = () => {
   const [hasAccess, setHasAccess] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const campaign = useWebsiteUTMCampaign();
 
+
+  // 🔹 Listen to modal open / close
+  useEffect(() => {
+    const hide = () => setHidden(true);
+    const show = () => setHidden(false);
+
+    window.addEventListener("hide-bottom-cta", hide);
+    window.addEventListener("show-bottom-cta", show);
+
+    return () => {
+      window.removeEventListener("hide-bottom-cta", hide);
+      window.removeEventListener("show-bottom-cta", show);
+    };
+  }, []);
+
+  // 🔹 Brochure access check
   useEffect(() => {
     const checkCookie = () => {
       const cookie = document.cookie.includes("brochure_filled=yes");
@@ -19,6 +36,9 @@ const BottomCtaStrip = () => {
 
     return () => window.removeEventListener("brochure-updated", checkCookie);
   }, []);
+
+  // ✅ IMPORTANT: hide CTA when modal is open
+  if (hidden) return null;
 
   // ------------------------------------------
   // 🔹 Brochure Handler
