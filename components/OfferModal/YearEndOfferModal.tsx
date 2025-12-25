@@ -91,14 +91,21 @@ const YearEndOfferModal = () => {
       window.dispatchEvent(
         new CustomEvent("open-enquiry-modal", {
           detail: {
-            utm_medium: "Popup",
-            utm_content: "Year End Offer",
-            utm_source: "Hub Landing",
-            utm_campaign: campaign,
+            utm:{
+              utm_medium: "Popup",
+              utm_content: "Year End Offer",
+              utm_source: "Hub Landing",
+              utm_campaign: campaign,
+            },
+            cta: {
+              event: "offerleadFormSuccess",
+              action: "Offer Enquire Submitted",
+              lead_source: "offer_modal_enquire",
+            },
           },
         })
       );
-
+      
       document.getElementById("enquiryModal")?.classList.remove("hidden");
     }
   };
@@ -120,7 +127,7 @@ const YearEndOfferModal = () => {
         {/* ❌ Close */}
         <button
           onClick={closeModal}
-          className="cursor-pointer absolute top-3 right-3 z-10 bg-white rounded-full p-1 shadow"
+          className="cursor-pointer absolute top-3 right-3 z-10 bg-white text-black rounded-full p-1 shadow"
         >
           <X size={22} />
         </button>

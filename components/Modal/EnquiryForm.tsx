@@ -12,6 +12,12 @@ export default function EnquiryModal() {
     utm_campaign: string;
   } | null>(null);
 
+  const [ctaConfig, setCtaConfig] = useState<{
+    event: string;
+    action: string;
+    lead_source: string;
+  } | null>(null);
+
   const closeModal = () => {
     document.getElementById("enquiryModal")?.classList.add("hidden");
   };
@@ -20,7 +26,8 @@ export default function EnquiryModal() {
   useEffect(() => {
     const handleUtmEvent = (e: Event) => {
       const customEvent = e as CustomEvent;
-      setWebUtmContext(customEvent.detail);
+      setWebUtmContext(customEvent.detail.utm);
+      setCtaConfig(customEvent.detail.cta);
     };
 
     window.addEventListener("open-enquiry-modal", handleUtmEvent);
@@ -46,7 +53,13 @@ export default function EnquiryModal() {
         </button>
 
         {/* Render form only when UTM is set */}
-        {utmWebContext && <HUBForm utmWebContext={utmWebContext} />}
+        {utmWebContext && ctaConfig && (
+          <HUBForm
+            utmWebContext={utmWebContext}
+            ctaConfig={ctaConfig}
+            onSuccess={closeModal}
+          />
+        )}
       </div>
     </div>
   );

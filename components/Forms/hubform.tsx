@@ -11,8 +11,16 @@ import { getWithExpiry } from '@/utils/localstorage';
 import { CustomButton } from "@/uiComponents/Button";
 import { pushGTMEvent } from "@/utmTracker/gtm";
 
+// 🔹 GTM CTA Config Type
+type LeadCTAConfig = {
+  event: string;
+  action: string;
+  lead_source: string;
+};
+
 interface HubBrochureFormProps {
   onSuccess?: () => void;
+  ctaConfig: LeadCTAConfig; // 👈 use it here
 }
 
 interface FormData {
@@ -33,7 +41,7 @@ interface utmWebsiteFormProps {
 }
 
 
-const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSuccess, utmWebContext }) => {
+const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSuccess, utmWebContext, ctaConfig }) => {
   const [query, setQuery] = useState("");
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -128,30 +136,11 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
         });
         setConsent(true);
 
-        // ⚡️ Trigger Google Tag Manager event
-        // try {
-        //   if (typeof window !== "undefined") {
-        //     const uniqueLeadId = 'lead_' + Date.now();
-        //     (window as any).dataLayer = (window as any).dataLayer || [];
-        //     (window as any).dataLayer.push({
-        //       event: 'leadFormSuccess',
-        //       leadId: uniqueLeadId,
-        //       project: formData.selectproject,
-        //       utm_campaign: payload?.utmParams?.utm_campaign || utmWebContext?.utm_campaign,
-        //       utm_source: payload?.utmParams?.utm_source || utmWebContext?.utm_source,
-        //       utm_medium: payload?.utmParams?.utm_medium || utmWebContext?.utm_medium,
-        //       utm_content: payload?.utmParams?.utm_content || utmWebContext?.utm_content,
-        //     });
-        //     console.log("✅ GTM leadFormSuccess event pushed", formData.selectproject);
-        //   } else {
-        //     console.warn("⚠️ GTM not initialized, skipping tracking.");
-        //   }
-        // } catch (err) {
-        //   console.error("Error pushing GTM event:", err);
-        // }
         pushGTMEvent({
-          event: "leadFormSuccess",
-          action: "Form Submitted",
+          event: ctaConfig.event,
+          action: ctaConfig.action,
+          lead_source: ctaConfig.lead_source,
+
           utm_campaign: payload?.utmParams?.utm_campaign || utmWebContext?.utm_campaign,
           utm_source: payload?.utmParams?.utm_source || utmWebContext?.utm_source,
           utm_medium: payload?.utmParams?.utm_medium || utmWebContext?.utm_medium,
@@ -175,12 +164,7 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
         } catch (err) {
           console.error("Error triggering Outbrain conversion:", err);
         }
-     
-        // ✅ Optional: clear after success
-        // localStorage.removeItem("utmParams");
-        // localStorage.removeItem("outbrainParams");
-        // setUtmParams({});
-        // setOutbrainParams({});
+
         onSuccess?.();
       } else {
         setStatus(data.error || "Something went wrong.");

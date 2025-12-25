@@ -87,10 +87,17 @@ export default function HeroSection() {
 
       const utmEvent = new CustomEvent("open-enquiry-modal", {
         detail: {
-          utm_medium: "Hero Section",
-          utm_content: "Download Brochure",
-          utm_source: "Hub Landing",
-          utm_campaign: campaign,
+          utm:{
+            utm_medium: "Hero Section",
+            utm_content: "Download Brochure",
+            utm_source: "Hub Landing",
+            utm_campaign: campaign,
+          },
+          cta: {
+            event: "brochureleadFormSuccess",
+            action: "Brochure Download Enquire Submitted",
+            lead_source: "home_download_brochure",
+          },
         },
       });
 

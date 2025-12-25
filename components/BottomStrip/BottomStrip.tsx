@@ -64,10 +64,17 @@ const BottomCtaStrip = () => {
 
       const utmEvent = new CustomEvent("open-enquiry-modal", {
         detail: {
-          utm_medium: "Bottom Strip",
-          utm_content: "Enquire",
-          utm_source: "Hub Landing",
-          utm_campaign: campaign,
+          utm: {
+            utm_medium: "Bottom Strip",
+            utm_content: "Enquire",
+            utm_source: "Hub Landing",
+            utm_campaign: campaign,
+          },
+          cta: {
+            event: "leadFormSuccess",
+            action: "Bottom Strip Enquire Submitted",
+            lead_source: "bottom_strip_cta",
+          },
         },
       });
 
