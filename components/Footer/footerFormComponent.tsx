@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import { useWebsiteUTMCampaign } from "@/utils/utmHelper";
 import HUBForm from "../Forms/hubform";
 
+const FOOTER_CTA_CONFIG = {
+  event: "leadFormSuccess",
+  action: "Footer Enquiry Submitted",
+  lead_source: "footer_form",
+};
+
+
 export default function FooterFormComponent({ onSuccess }: { onSuccess: () => void }) {
   const campaign = useWebsiteUTMCampaign();
 
@@ -29,6 +36,7 @@ export default function FooterFormComponent({ onSuccess }: { onSuccess: () => vo
             onSuccess();   // 👈 send signal to parent (FooterWrapper)
           }}
           utmWebContext={{ ...utmWebContext, utm_campaign: campaign }}
+          ctaConfig={FOOTER_CTA_CONFIG}
         />
       )}
     </>
