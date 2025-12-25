@@ -105,7 +105,7 @@ const YearEndOfferModal = () => {
           },
         })
       );
-      
+
       document.getElementById("enquiryModal")?.classList.remove("hidden");
     }
   };
@@ -121,8 +121,8 @@ const YearEndOfferModal = () => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-      <div className="relative w-full max-w-3xl overflow-hidden rounded-t-xl">
+    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-4">
+      <div className="md:mt-10 relative w-full max-w-3xl overflow-hidden rounded-t-xl">
 
         {/* ❌ Close */}
         <button
