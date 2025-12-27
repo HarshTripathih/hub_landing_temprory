@@ -29,6 +29,8 @@ interface FormData {
   selectproject: string;
   phone: string;
   countryCode: string;
+  occupation: string;
+  budget?: string;
 }
 
 interface utmWebsiteFormProps {
@@ -40,7 +42,6 @@ interface utmWebsiteFormProps {
   }
 }
 
-
 const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSuccess, utmWebContext, ctaConfig }) => {
   const [query, setQuery] = useState("");
   const [formData, setFormData] = useState<FormData>({
@@ -49,7 +50,46 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
     selectproject: "Aliens Hub",
     phone: "",
     countryCode: "+91 / India",
+    occupation: "",
+    budget: "",
   });
+
+  const validateForm = () => {
+    if (!formData.name.trim()) {
+      toast.error("Please enter your name", { position: "top-center" });
+      return false;
+    }
+
+    if (!formData.email.trim()) {
+      toast.error("Please enter your email address", { position: "top-center" });
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address", { position: "top-center" });
+      return false;
+    }
+
+    if (!formData.phone.trim()) {
+      toast.error("Please enter your mobile number", { position: "top-center" });
+      return false;
+    }
+
+    if (!/^[0-9]{6,15}$/.test(formData.phone)) {
+      toast.error("Please enter a valid mobile number", { position: "top-center" });
+      return false;
+    }
+
+    if (!formData.budget) {
+      toast.error("Please select your budget", { position: "top-center" });
+      return false;
+    }
+
+    return true;
+  };
+
+  // console.log(formData);
   const [status, setStatus] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [consent, setConsent] = useState<boolean>(true);
@@ -74,6 +114,8 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!validateForm()) return;
+
     if (!consent) {
       toast.error("You must agree to receive updates and promotional offers.", {
         position: "top-center",
@@ -89,6 +131,7 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
       const payload: any = {
         ...formData,
         formType: "hubForm",
+        FormSource: "Hub Landing",
       };
 
       // ✅ Always read fresh from storage
@@ -125,14 +168,16 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
           autoClose: 3000,
         });
         setStatus("Submitted successfully!");
-        setSubmitted(true);
 
+        setSubmitted(true);
         setFormData({
           name: "",
           email: "",
           selectproject: "Aliens Hub",
           phone: "",
           countryCode: "",
+          occupation: "",
+          budget: "",
         });
         setConsent(true);
 
@@ -140,6 +185,8 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
           event: ctaConfig.event,
           action: ctaConfig.action,
           lead_source: ctaConfig.lead_source,
+          occupation: formData.occupation,
+          budget: formData.budget,
 
           utm_campaign: payload?.utmParams?.utm_campaign || utmWebContext?.utm_campaign,
           utm_source: payload?.utmParams?.utm_source || utmWebContext?.utm_source,
@@ -200,20 +247,18 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Your Name"
+              placeholder="Your Name*"
               aria-label="Your Name"
               className="w-[90%] bg-transparent border-b border-white outline-none -mt-4 py-2 placeholder-white text-white"
-              required
             />
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Your Email"
+              placeholder="Your Email*"
               aria-label="Your Email"
               className="bg-transparent w-[90%] border-b border-white outline-none placeholder-white text-base py-2 text-white"
-              required
             />
 
             <input
@@ -224,26 +269,55 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
               aria-label="Selected Project"
               className="w-[90%] bg-transparent border-b border-white outline-none py-2 placeholder-white text-white cursor-not-allowed"
             />
-            <div className="w-[90%] bg-transparent border-b border-white py-2 text-white cursor-not-allowed">
+            <div className="hidden w-[90%] bg-transparent border-b border-white py-2 text-white cursor-not-allowed">
               Luxury Golf Villa Hill Township
             </div>
 
+            <select
+              name="budget"
+              value={formData.budget}
+              onChange={handleChange}
+              className="w-[90%] bg-transparent border-b border-white outline-none py-2 text-white"
+            >
+              <option value="" className="text-black">
+                Budget
+              </option>
+              <option value="<50 Lakhs" className="text-black">
+                &lt; 50 Lakhs
+              </option>
+              <option value="50 L - 1 Cr" className="text-black">
+                50 L - 1 Cr
+              </option>
+              <option value=">1 Cr" className="text-black">
+                &gt; 1 Cr
+              </option>
+            </select>
 
-            <div className="flex flex-col sm:flex-row sm:space-x-2 mb-2 w-[90%] max-w-xl">
+            <input
+              type="text"
+              name="occupation"
+              value={formData.occupation}
+              onChange={handleChange}
+              placeholder="Occupation"
+              aria-label="Occupation"
+              className="w-[90%] bg-transparent border-b border-white outline-none py-2 placeholder-white text-white"
+            />
+
+            <div className="flex flex-row sm:space-x-2 mb-2 w-[90%] max-w-xl">
               {/* Country Code */}
               <Listbox
                 value={formData.countryCode}
                 onChange={(val) => setFormData((prev) => ({ ...prev, countryCode: val }))}
               >
-                <div className="relative w-full sm:w-36">
-                  <Listbox.Button className="w-full border-b border-white py-2 px-0 text-left text-white bg-transparent flex items-center justify-between">
+                <div className="relative w-14 sm:w-14">
+                  <Listbox.Button className="border-b border-white py-2 px-0 text-left text-white bg-transparent flex items-center justify-between">
                     <span>
                       {countryCodes.find((c) => c.value === formData.countryCode)?.code || 'Select'}
                     </span>
                     <ChevronDownIcon className="h-5 w-5 text-white" />
                   </Listbox.Button>
 
-                  <Listbox.Options className="absolute mt-1 max-h-40 w-full sm:w-72 overflow-auto rounded-md bg-white text-black shadow-lg z-10">
+                  <Listbox.Options className="absolute mt-1 max-h-40 w-52 sm:w-72 overflow-auto rounded-md bg-white text-black shadow-lg z-10">
                     <div className="sticky top-0 bg-white px-2 py-1">
                       <input
                         type="text"
@@ -283,7 +357,6 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
                   placeholder="Enter Phone Number"
                   pattern="[0-9]{6,15}"
                   className="w-full bg-transparent placeholder-white border-b border-white outline-none py-2 sm:py-2 text-base text-white"
-                  required
                 />
               </div>
             </div>

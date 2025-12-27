@@ -36,12 +36,14 @@ interface FormData {
   email: string;
   phone: string;
   countryCode: string;
-  department: string
+  occupation: string;
+  budget?: string;
   selectproject: string;
   utmParams?: UTMParams; // for utm tracking
   outbrainParams?: OutbrainParams; // for outbrain tracking
   utmWebContext?: UTMWebContext;  // for organic website tracking
   formType?: string;
+  FormSource?: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -54,11 +56,13 @@ export async function POST(request: NextRequest) {
       phone,
       countryCode,
       selectproject,
-      department,
+      occupation,
+      budget,
       utmParams = {},
       outbrainParams = {},
       utmWebContext = {},
       formType = 'default',
+      FormSource = 'default',
     } = body;
     // console.log('Received form data:', body); // Debug log
 
@@ -92,12 +96,14 @@ export async function POST(request: NextRequest) {
       email,
       phone,
       countryCode,
-      department,
+      department: occupation,
+      budget,
       selectproject,
       utmParams,
       outbrainParams,
       utmWebContext,
       formType,
+      FormSource,
       leadOwner: "", // can be updated later by admin
       status: {
         qualified: false,
@@ -139,7 +145,8 @@ export async function POST(request: NextRequest) {
       mobile: phone,
       '00N2x000006dUsf': countryCode, //country code
       '00N2x000003TZ67': selectproject,
-      '00N2x000006Pgl1': department,
+      '00N2x000003TZ4w': budget || '',  // budget filed,
+      '00N2x000006PgI1': occupation, //Departement field,
       retURL: 'https://www.alienshub.co.in/luxury-plots-srisailam-highway-kadthal-hyderabad/',
       '00N2x000003TZ73': utmParams?.utm_medium || utmWebContext?.utm_medium || '',     // ✅ optional chaining
       '00N9C000000No9S': 'Digital',

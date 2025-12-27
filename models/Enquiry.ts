@@ -11,6 +11,7 @@ export interface IEnquiry extends Document {
   outbrainParams?: Record<string, any>;
   utmWebContext?: Record<string, any>;
   formType?: string;
+  FormSource?: string;
   leadOwner?: string; // ✅ manually assignable
   status: {
     qualified: boolean;
@@ -32,7 +33,7 @@ const enquirySchema = new Schema<IEnquiry>(
     outbrainParams: { type: Object },
     utmWebContext: { type: Object },
     formType: { type: String, default: "default" },
-
+    FormSource: { type: String, default: "default"},
     // ✅ new fields
     leadOwner: { type: String, default: "" },
     status: {
