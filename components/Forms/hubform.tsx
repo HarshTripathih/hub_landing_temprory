@@ -168,7 +168,6 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
           autoClose: 3000,
         });
         setStatus("Submitted successfully!");
-
         setSubmitted(true);
         setFormData({
           name: "",

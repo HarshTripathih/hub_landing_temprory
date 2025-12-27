@@ -183,12 +183,12 @@ export async function POST(request: NextRequest) {
       message: "Form submitted successfully",
     });
 
+    
     response.cookies.set("brochure_filled", "yes", {
       httpOnly: false,          // must be readable in browser
       secure: true,             // HTTPS only
       maxAge: 60 * 60 * 24 * 2,    // ✅ 2 DAYS
       path: "/",                // available everywhere
-      sameSite: "lax",
     });
 
     return response;
