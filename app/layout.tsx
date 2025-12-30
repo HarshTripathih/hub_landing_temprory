@@ -214,7 +214,7 @@ export default function RootLayout({
           {children}
           <WhatsAppChat
             phone="918977943645"
-            message="Hi, I’m interested in your projects."
+            message="Hello, I’d like to get more information about Aliens Hub."
           />
         <YearEndOfferModal />
         <ToastProvider />
