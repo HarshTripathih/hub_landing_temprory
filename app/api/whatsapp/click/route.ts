@@ -7,6 +7,9 @@ export async function POST(req: Request) {
 
   const {
     userId,
+    countryCode,
+    phone,
+    selectproject,
     utmParams,
     outbrainParams,
     utmWebContext,
@@ -22,6 +25,9 @@ export async function POST(req: Request) {
     // ✅ First click → store attribution
     await WhatsAppSession.create({
       userId,
+      countryCode,
+      phone,
+      selectproject,
       clickCount: 1,
       utmParams,
       outbrainParams,

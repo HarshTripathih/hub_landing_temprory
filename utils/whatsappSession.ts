@@ -4,7 +4,14 @@ import type { UTMParams, OutbrainParams } from "@/interfaces/marketing.interface
 
 const SESSION_KEY = "userId";
 
-export const handleWhatsAppSession = async () => {
+interface WhatsAppSessionInput {
+  countryCode?: string;
+  phone?: string;
+}
+
+export const handleWhatsAppSession = async (
+  input?: WhatsAppSessionInput
+) => {
   let userId = sessionStorage.getItem(SESSION_KEY);
   const isNewSession = !userId;
 
@@ -18,21 +25,20 @@ export const handleWhatsAppSession = async () => {
 
   const payload: any = { userId };
 
-  // ✅ Only attach attribution on FIRST click
-  if (isNewSession) {
+  // ✅ Only send phone on FIRST click
+  if (isNewSession && input?.countryCode && input?.phone) {
+    payload.countryCode = input.countryCode;
+    payload.phone = input.phone;
+    payload.selectproject = "Aliens Hub";
+  }
 
-    // 1️⃣ Paid campaigns
+  // ✅ Attribution only once
+  if (isNewSession) {
     if (storedUTM && Object.values(storedUTM).some(Boolean)) {
       payload.utmParams = storedUTM;
-    }
-
-    // 2️⃣ Outbrain
-    else if (storedOutbrain && storedOutbrain.secondary_source) {
+    } else if (storedOutbrain && storedOutbrain.secondary_source) {
       payload.outbrainParams = storedOutbrain;
-    }
-
-    // 3️⃣ Website / Organic / Direct (dynamic)
-    else if (typeof window !== "undefined") {
+    } else if (typeof window !== "undefined") {
       payload.utmWebContext = {
         utm_source: "website",
         utm_medium: "organic",
@@ -42,7 +48,6 @@ export const handleWhatsAppSession = async () => {
     }
   }
 
-  // 🔥 Fire & forget
   fetch("/api/whatsapp/click", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

@@ -2,6 +2,8 @@ export interface WhatsAppSession {
   _id: string;
   userId: string;
   clickCount: number;
+  phone?: string;
+  countryCode?: string;
 
   utmParams?: {
     utm_campaign?: string;
