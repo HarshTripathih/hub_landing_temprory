@@ -16,7 +16,7 @@ export default function WhatsAppModal({
   message,
   onClose,
 }: Props) {
-  const [countryCode, setCountryCode] = useState("");
+  const [countryCode, setCountryCode] = useState("+91 / India");
   const [phone, setPhone] = useState("");
 
   // ✅ strict validation
@@ -73,18 +73,42 @@ export default function WhatsAppModal({
         </h3>
 
         <div className="flex gap-3 mb-4">
-          <select
-            value={countryCode}
-            onChange={(e) => setCountryCode(e.target.value)}
-            className="border-2 border-white text-white rounded-md px-3 py-2 w-20 min-w-10"
-          >
-            <option value="">Country</option>
-            {countryCodes.map((c) => (
-              <option key={c.code + c.label} value={c.value}>
-                {c.value}
-              </option>
-            ))}
-          </select>
+          <div className="relative w-24">
+            {/* Visible selected value */}
+            <div
+              className="
+                absolute inset-0
+                pointer-events-none
+                flex items-center justify-center
+                text-white font-medium
+              "
+            >
+              {countryCode || "Code"}
+            </div>
+
+            {/* Actual select */}
+            <select
+              value={countryCode}
+              onChange={(e) => setCountryCode(e.target.value)}
+              className="
+                appearance-none
+                bg-transparent
+                border-2 border-white
+                text-transparent
+                rounded-md
+                px-3 py-2
+                w-full
+                cursor-pointer
+              "
+            >
+              <option value="">Country</option>
+              {countryCodes.map((c) => (
+                <option key={c.code + c.label} value={c.value}>
+                  {c.value}
+                </option>
+              ))}
+            </select>
+          </div>
 
           <input
             type="tel"
