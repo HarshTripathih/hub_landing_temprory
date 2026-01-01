@@ -76,7 +76,7 @@ export default function WhatsAppModal({
           <select
             value={countryCode}
             onChange={(e) => setCountryCode(e.target.value)}
-            className="border-2 border-white text-white rounded-md px-3 py-2 w-20 md:w-40"
+            className="border-2 border-white text-white rounded-md px-3 py-2 w-20 min-w-10"
           >
             <option value="">Country</option>
             {countryCodes.map((c) => (
@@ -93,7 +93,7 @@ export default function WhatsAppModal({
             onChange={(e) =>
               setPhone(e.target.value.replace(/\D/g, ""))
             }
-            className="border-2 border-white text-white rounded-md px-3 py-2 flex-1"
+            className="border-2 border-white text-white rounded-md px-3 py-2 flex-1 min-w-32"
           />
         </div>
 
