@@ -14,6 +14,7 @@ export interface IWhatsAppSession extends Document {
   phone?: string;
   countryCode?: string;
   selectproject?: string;
+  FormSource?: string;
 
   utmParams?: Record<string, any>;
   outbrainParams?: Record<string, any>;
@@ -41,6 +42,7 @@ const WhatsAppSessionSchema = new Schema<IWhatsAppSession>(
     phone: { type: String },
     countryCode: { type: String },
     selectproject: { type: String },
+    FormSource: { type: String, default: "default"},
 
     utmParams: { type: Object },
     outbrainParams: { type: Object },
