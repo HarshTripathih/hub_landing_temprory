@@ -216,7 +216,7 @@ export default function RootLayout({
             phone="918977943645"
             message="Hello, I’d like to get more information about Aliens Hub."
           />
-        <YearEndOfferModal />
+        {/* <YearEndOfferModal /> */}
         <ToastProvider />
       </body>
     </html>

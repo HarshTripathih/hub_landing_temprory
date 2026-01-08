@@ -23,7 +23,7 @@ export default function Navbar() {
         "
       >
         {/* LEFT LOGO */}
-        <div className="flex items-center gap-8 text-sm">
+        <div className="flex items-center gap-y-8 gap-x-4 text-sm">
           <Link href="/">
             <Image 
               src="https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/logo/hub_logo.png"
@@ -33,6 +33,9 @@ export default function Navbar() {
               className="object-contain w-10 h-auto md:w-[60px]"
             />
           </Link>
+          <a href="/">
+            <h2 className="text-white font-lato text-lg md:text-2xl font-bold">Aliens HUB</h2>
+          </a>
         </div>
 
         {/* RIGHT MENU (Desktop) */}
