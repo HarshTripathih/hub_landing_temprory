@@ -82,7 +82,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 md:h-[190vh]
+      className="relative pt-26 md:pt-40 pb-20 text-center text-white p-4 md:p-0 h-auto
       bg-[url('https://d1b9peg0jj5bry.cloudfront.net/Aliens_Hub_Landing/images/hero_bg-min.jpg')]
       bg-cover bg-center bg-no-repeat"
     >
