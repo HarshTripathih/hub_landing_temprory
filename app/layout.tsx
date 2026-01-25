@@ -72,8 +72,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        {/* Google Tag Manager - PRIMARY */}
+        <Script id="google-tag-manager-1" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -83,20 +83,37 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Google Tag Manager - SECONDARY */}
+        <Script id="google-tag-manager-2" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID_SECOND}');
+          `}
+        </Script>
+
         {/* Google Ads gtag.js */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
         />
 
-        <Script id="google-ads-gtag" strategy="afterInteractive">
+        <Script id="google-ads-gtag-multiple" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+
+            // Primary Google Ads
             gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');
+
+            // Secondary Google Ads
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID_SECOND}');
           `}
         </Script>
+
 
         {/* Microsoft Clarity */}
         <Script id="ms-clarity" strategy="afterInteractive">
@@ -177,10 +194,20 @@ export default function RootLayout({
       </head>
 
       <body className={allFontVariables.join(" ")}>
-        {/* Google Tag Manager (noscript) */}
+        {/* Google Tag Manager - PRIMARY (noscript) */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
+        {/* Google Tag Manager - SECONDARY (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID_SECOND}`}
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
