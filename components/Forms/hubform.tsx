@@ -193,6 +193,16 @@ const HUBForm: React.FC<HubBrochureFormProps & utmWebsiteFormProps> = ({onSucces
           utm_content: payload?.utmParams?.utm_content || utmWebContext?.utm_content,
         });
 
+        // ✅ Notify HeroSection to re-check cookie
+        window.dispatchEvent(new Event("brochure-updated"));
+
+        // ✅ Open brochure immediately
+        window.open("/Hub-Brochure.pdf", "_blank");
+
+        // ✅ Close enquiry modal
+        document.getElementById("enquiryModal")?.classList.add("hidden");
+
+
         // ✅ Trigger Outbrain conversion safely
         try {
           if (typeof window !== "undefined" && (window as any).obApi) {

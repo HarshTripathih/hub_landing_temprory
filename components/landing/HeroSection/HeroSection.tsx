@@ -26,6 +26,7 @@ export default function HeroSection() {
     return () => window.removeEventListener("brochure-updated", checkCookie);
   }, []);
 
+
   // -----------------------------
   // 📄 BROCHURE DOWNLOAD
   // -----------------------------
@@ -44,7 +45,6 @@ export default function HeroSection() {
         location: "Hero Section",
         utm_content: "Download Brochure",
       });
-
       const utmEvent = new CustomEvent("open-enquiry-modal", {
         detail: {
           utm: {
